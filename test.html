@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BBCO Vault Test Form</title>
+<style>
+:root{--bg:#F4F5F7;--card:#FFFFFF;--ink:#171717;--muted:#5B6470;--line:#DDE1E6;--red:#C8102E}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#11161E;--card:#1D2531;--ink:#ECEFF4;--muted:#9AA4B2;--line:#2A3442}}
+:root[data-theme="dark"]{--bg:#11161E;--card:#1D2531;--ink:#ECEFF4;--muted:#9AA4B2;--line:#2A3442}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 "Segoe UI",system-ui,sans-serif}
+header{background:var(--red);color:#fff;padding:18px 16px}header h1{margin:0;font-size:22px}
+.top{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;max-width:980px;margin:0 auto}
+.stamp{font-size:13px;opacity:.9}.th button{background:rgba(255,255,255,.18);color:#fff;border:0;border-radius:8px;padding:5px 10px;cursor:pointer;font:600 13px inherit}
+.th button[aria-pressed="true"]{background:#fff;color:var(--red)}
+main{max-width:980px;margin:0 auto;padding:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+h2{margin:0 0 4px;font-size:17px}p.hint{margin:0 0 12px;color:var(--muted);font-size:13px}
+label{display:block;font-size:13px;color:var(--muted);margin:10px 0 4px}
+input,textarea{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--ink);font:inherit}
+.q{border-left:3px solid var(--red);padding-left:10px;margin-top:12px}.q [role=heading]{font-weight:600;font-size:14px}
+.q input{border:0;border-bottom:1px solid var(--line);border-radius:0;padding:6px 0}
+button.go{margin-top:12px;background:var(--red);color:#fff;border:0;border-radius:9px;padding:9px 14px;font:600 14px inherit;cursor:pointer}
+#status{grid-column:1/-1;font-size:13px;color:var(--muted)}
+</style></head>
+<body>
+<header><div class="top"><div><h1>BBCO Vault test form</h1><div class="stamp" id="stamp">Last updated Mon 16 Nov 2026, 1:45pm</div></div>
+<div class="th" id="th"><button data-m="auto">Auto</button> <button data-m="light">Light</button> <button data-m="dark">Dark</button></div></div></header>
+<main>
+<div id="status">Click any box. A red “BBCO Vault” box should open under it. Nothing you type here is sent anywhere: this page has no server and every button is blocked.</div>
+
+<section><h2>1. Login form</h2><p class="hint">Should offer “Fill login” (only if a login is saved for this site).</p>
+<form onsubmit="return false"><label for="lu">Email or username</label><input id="lu" name="username" autocomplete="username">
+<label for="lp">Password</label><input id="lp" type="password" name="password" autocomplete="current-password">
+<button class="go" type="button">Sign in (does nothing)</button></form></section>
+
+<section><h2>2. My details (proper labels)</h2><p class="hint">Should offer “Fill my details” and fill every box.</p>
+<form onsubmit="return false" autocomplete="on">
+<label for="fn">First name</label><input id="fn" autocomplete="given-name">
+<label for="ln">Last name</label><input id="ln" autocomplete="family-name">
+<label for="em">Email</label><input id="em" type="email" autocomplete="email">
+<label for="ph">Phone</label><input id="ph" type="tel" autocomplete="tel">
+<label for="co">Company</label><input id="co" autocomplete="organization">
+<label for="st">Street address</label><input id="st" autocomplete="address-line1">
+<label for="sb">Suburb</label><input id="sb" autocomplete="address-level2">
+<label for="sa">State</label><input id="sa" autocomplete="address-level1">
+<label for="pc">Postcode</label><input id="pc" autocomplete="postal-code">
+<label for="cy">Country</label><input id="cy" autocomplete="country-name">
+</form></section>
+
+<section><h2>3. My details (no hints, like many sites)</h2><p class="hint">Boxes with only a label, no autocomplete hints.</p>
+<form onsubmit="return false">
+<label for="x1">Full name</label><input id="x1" name="fullname">
+<label for="x2">Your email address</label><input id="x2" name="contact">
+<label for="x3">Mobile number</label><input id="x3" name="m">
+<label for="x4">Pick-up address</label><input id="x4" name="a1">
+<label for="x5">City</label><input id="x5" name="c">
+<label for="x6">Postcode</label><input id="x6" name="z">
+</form></section>
+
+<section><h2>4. Google Forms style</h2><p class="hint">Question title above a plain box, like the BBCO Google Form.</p>
+<form onsubmit="return false">
+<div class="q" role="listitem"><div role="heading" id="g1">Email *</div><input type="email" aria-label="Your email address" placeholder="Your email address"></div>
+<div class="q" role="listitem"><div role="heading" id="g2">Name of person booking</div><input aria-labelledby="g2" placeholder="Your answer"></div>
+<div class="q" role="listitem"><div role="heading" id="g3">Contact phone</div><input aria-labelledby="g3" placeholder="Your answer"></div>
+<div class="q" role="listitem"><div role="heading" id="g4">Pick-up address</div><input aria-labelledby="g4" placeholder="Your answer"></div>
+<div class="q" role="listitem"><div role="heading" id="g5">Anything else?</div><textarea aria-labelledby="g5" placeholder="Your answer" rows="2"></textarea></div>
+</form></section>
+
+<section><h2>5. Payment card</h2><p class="hint">Should offer “Fill card”. Use the fake test card only.</p>
+<form onsubmit="return false">
+<label for="c1">Name on card</label><input id="c1" autocomplete="cc-name">
+<label for="c2">Card number</label><input id="c2" autocomplete="cc-number" inputmode="numeric">
+<label for="c3">Expiry (MM/YY)</label><input id="c3" autocomplete="cc-exp">
+<label for="c4">CVC</label><input id="c4" autocomplete="cc-csc" inputmode="numeric">
+</form></section>
+
+<section><h2>6. Card (no hints)</h2><p class="hint">Card boxes named only by their labels.</p>
+<form onsubmit="return false">
+<label for="d1">Cardholder</label><input id="d1">
+<label for="d2">Credit card</label><input id="d2">
+<label for="d3">Expiry date</label><input id="d3">
+<label for="d4">Security code</label><input id="d4">
+<button class="go" type="button" onclick="document.querySelectorAll('input,textarea').forEach(i=>i.value='')">Clear every box</button>
+</form></section>
+</main>
+<script>
+(function(){
+  var root=document.documentElement, K="bbco-test-theme";
+  function set(m){ if(m==="auto") root.removeAttribute("data-theme"); else root.setAttribute("data-theme",m);
+    document.querySelectorAll("#th button").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.m===m))});
+    try{localStorage.setItem(K,m)}catch(e){} }
+  var m="auto"; try{m=localStorage.getItem(K)||"auto"}catch(e){}
+  set(m); document.querySelectorAll("#th button").forEach(function(b){b.onclick=function(){set(b.dataset.m)}});
+})();
+</script>
+</body></html>

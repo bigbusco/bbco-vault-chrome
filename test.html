@@ -21,10 +21,10 @@ button.go{margin-top:12px;background:var(--red);color:#fff;border:0;border-radiu
 #status{grid-column:1/-1;font-size:13px;color:var(--muted)}
 </style></head>
 <body>
-<header><div class="top"><div><h1>BBCO Vault test form</h1><div class="stamp" id="stamp">Last updated Mon 16 Nov 2026, 1:45pm</div></div>
+<header><div class="top"><div><h1>BBCO Vault test form</h1><div class="stamp" id="stamp">Last updated Mon 16 Nov 2026, 3:25pm</div></div>
 <div class="th" id="th"><button data-m="auto">Auto</button> <button data-m="light">Light</button> <button data-m="dark">Dark</button></div></div></header>
 <main>
-<div id="status">Click any box. A red “BBCO Vault” box should open under it. Nothing you type here is sent anywhere: this page has no server and every button is blocked.</div>
+<div id="status">Click any box: the BBCO Vault list opens beside it. Type new details in 2+ boxes and press Submit to see “Save these details?”. Nothing you type here is sent anywhere: this page has no server and every button is blocked.</div>
 
 <section><h2>1. Login form</h2><p class="hint">Should offer “Fill login” (only if a login is saved for this site).</p>
 <form onsubmit="return false"><label for="lu">Email or username</label><input id="lu" name="username" autocomplete="username">
@@ -43,6 +43,7 @@ button.go{margin-top:12px;background:var(--red);color:#fff;border:0;border-radiu
 <label for="sa">State</label><input id="sa" autocomplete="address-level1">
 <label for="pc">Postcode</label><input id="pc" autocomplete="postal-code">
 <label for="cy">Country</label><input id="cy" autocomplete="country-name">
+<button class="go" type="button" onclick="this.textContent='Submitted (nothing sent)'">Submit</button>
 </form></section>
 
 <section><h2>3. My details (no hints, like many sites)</h2><p class="hint">Boxes with only a label, no autocomplete hints.</p>
@@ -53,6 +54,7 @@ button.go{margin-top:12px;background:var(--red);color:#fff;border:0;border-radiu
 <label for="x4">Pick-up address</label><input id="x4" name="a1">
 <label for="x5">City</label><input id="x5" name="c">
 <label for="x6">Postcode</label><input id="x6" name="z">
+<button class="go" type="button" onclick="this.textContent='Submitted (nothing sent)'">Submit</button>
 </form></section>
 
 <section><h2>4. Google Forms style</h2><p class="hint">Question title above a plain box, like the BBCO Google Form.</p>
@@ -62,6 +64,7 @@ button.go{margin-top:12px;background:var(--red);color:#fff;border:0;border-radiu
 <div class="q" role="listitem"><div role="heading" id="g3">Contact phone</div><input aria-labelledby="g3" placeholder="Your answer"></div>
 <div class="q" role="listitem"><div role="heading" id="g4">Pick-up address</div><input aria-labelledby="g4" placeholder="Your answer"></div>
 <div class="q" role="listitem"><div role="heading" id="g5">Anything else?</div><textarea aria-labelledby="g5" placeholder="Your answer" rows="2"></textarea></div>
+<button class="go" type="button" onclick="this.textContent='Submitted (nothing sent)'">Submit</button>
 </form></section>
 
 <section><h2>5. Payment card</h2><p class="hint">Should offer “Fill card”. Use the fake test card only.</p>
@@ -70,6 +73,7 @@ button.go{margin-top:12px;background:var(--red);color:#fff;border:0;border-radiu
 <label for="c2">Card number</label><input id="c2" autocomplete="cc-number" inputmode="numeric">
 <label for="c3">Expiry (MM/YY)</label><input id="c3" autocomplete="cc-exp">
 <label for="c4">CVC</label><input id="c4" autocomplete="cc-csc" inputmode="numeric">
+<button class="go" type="button" onclick="this.textContent='Submitted (nothing sent)'">Submit</button>
 </form></section>
 
 <section><h2>6. Card (no hints)</h2><p class="hint">Card boxes named only by their labels.</p>
@@ -78,6 +82,7 @@ button.go{margin-top:12px;background:var(--red);color:#fff;border:0;border-radiu
 <label for="d2">Credit card</label><input id="d2">
 <label for="d3">Expiry date</label><input id="d3">
 <label for="d4">Security code</label><input id="d4">
+<button class="go" type="button" onclick="this.textContent='Submitted (nothing sent)'">Submit</button>
 <button class="go" type="button" onclick="document.querySelectorAll('input,textarea').forEach(i=>i.value='')">Clear every box</button>
 </form></section>
 </main>
